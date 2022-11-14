@@ -5,18 +5,12 @@ export const ThemeContext = createContext()
 const ThemeContextProvider = (props) => {
   const [theme, setTheme] = useState(themeData.lightTheme)
 
-  const themeHandler = (theme) => {
-    switch (theme) {
-      case 'dark':
-        setTheme(themeData.darkTheme)
-        break
-      case 'blueThemeDark':
-        setTheme(themeData.lightTheme)
-        break
-      default:
-        setTheme(themeData.lightTheme)
-        break
-    }
+  const themeHandler = () => {
+    setTheme(
+      theme === themeData.lightTheme
+        ? themeData.darkTheme
+        : themeData.lightTheme
+    )
   }
   const value = { theme, themeHandler }
   return (

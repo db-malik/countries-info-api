@@ -1,17 +1,17 @@
 export const darkTheme = {
   type: 'dark',
-  primary: '#202C36',
-  secondary: '#2B3844',
-  ternary: '',
-  text: '#DDFCFF',
+  background: 'hsl(207, 26%, 17%)',
+  input: '#2B3844',
+  elements: 'hsl(209, 23%, 22%)',
+  text: 'hsl(0, 0%, 100%)',
 }
 
 export const lightTheme = {
   type: 'light',
-  primary: '#F2F2F2',
-  secondary: '#FFFFFF',
-  ternary: '',
-  text: '#111517',
+  background: 'hsl(0, 0%, 98%)',
+  input: 'hsl(0, 0%, 52%)',
+  elements: 'hsl(0, 0%, 100%)',
+  text: 'hsl(200, 15%, 8%)',
 }
 
 export const themeData = {
