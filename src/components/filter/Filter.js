@@ -2,30 +2,48 @@ import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import { ThemeContext } from '../../context/ThemeContext'
 
-const Filter = ({ FILTER_TAG }) => {
+const Filter = ({ filterHandler }) => {
+  const REGIONS = ['Africa', 'Europe', 'Oceania', 'Americas', 'Asia']
   const { theme } = useContext(ThemeContext)
   const [isOpen, setIsOpen] = useState(false)
-  const OpenFilterHandler = () => {
+  const [selectedItem, setSelectedItem] = useState('Filter by Region')
+
+  const toggleFilterHandler = () => {
     setIsOpen(!isOpen)
   }
-  const filterHandler = () => {
-    setIsOpen(false)
+
+  const showSelectedItem = (item) => {
+    setSelectedItem(item)
+    toggleFilterHandler()
   }
+
   return (
     <Container>
       <Button
         style={{ backgroundColor: theme.elements, color: theme.text }}
-        onClick={OpenFilterHandler}
+        onClick={toggleFilterHandler}
       >
-        Filter by Region
+        {selectedItem}
       </Button>
       {isOpen && (
         <Regions style={{ backgroundColor: theme.elements, color: theme.text }}>
-          {FILTER_TAG.map((item) => (
+          <Li
+            style={{ padding: '4px  0' }}
+            onClick={() => {
+              filterHandler('All')
+              showSelectedItem('All country')
+            }}
+          >
+            All
+          </Li>
+          {REGIONS.map((item) => (
             <Li
               style={{ padding: '4px  0' }}
               key={item}
-              onClick={filterHandler}
+              onClick={() => {
+                filterHandler(item)
+                showSelectedItem(item)
+              }}
             >
               {item}
             </Li>
@@ -38,6 +56,7 @@ const Filter = ({ FILTER_TAG }) => {
 
 const Container = styled.div`
   position: relative;
+  width: 200px;
 `
 
 const Button = styled.p`
