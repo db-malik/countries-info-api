@@ -2,13 +2,15 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { ThemeContext } from '../../context/ThemeContext'
 
-const Search = () => {
+const Search = ({ onSearch }) => {
   const { theme } = useContext(ThemeContext)
+
   return (
     <Input
       style={{ backgroundColor: theme.elements, color: theme.text }}
       type="text"
-      placeholder="Search fro a country..."
+      placeholder="Search for a country..."
+      onChange={onSearch}
     />
   )
 }

@@ -13,7 +13,7 @@ class App extends Component {
         <Header></Header>
         <BrowserRouter>
           <Routes>
-            <Route path="detail" element={<DetailPage />}></Route>
+            <Route path="/:name" element={<DetailPage />}></Route>
             <Route path="/" element={<HomePage />}></Route>
           </Routes>
         </BrowserRouter>

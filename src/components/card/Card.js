@@ -15,7 +15,7 @@ const Card = ({ country }) => {
   } = country
 
   const detailHandler = (name) => {
-    navigate(`/name:${name}`)
+    navigate(`/name=${name}`)
   }
 
   return (

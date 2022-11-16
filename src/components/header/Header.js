@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { ThemeContext } from '../../context/ThemeContext'
+import { BsSunFill, BsMoonFill } from 'react-icons/bs'
 
 const Header = () => {
   const { theme, themeHandler } = useContext(ThemeContext)
@@ -9,7 +10,15 @@ const Header = () => {
     <Container style={{ backgroundColor: theme.elements, color: theme.text }}>
       <Title>Where in the world?</Title>
       <Theme onClick={themeHandler}>
-        {theme.type === 'light' ? 'Dark mode' : 'Light mode'}
+        {theme.type === 'light' ? (
+          <span>
+            <BsMoonFill /> Dark mode
+          </span>
+        ) : (
+          <span>
+            <BsSunFill /> Light mode
+          </span>
+        )}
       </Theme>
     </Container>
   )
