@@ -1,47 +1,34 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
+
+import { useAPI } from '../../context/ApiContext'
+
 import Loader from '../../components/loader/Loader'
 import Card from '../../components/card/Card'
-import axios from 'axios'
+import Message from '../message/Message'
 
 const List = ({ searchText, regionFilter }) => {
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState('')
-  const [data, setData] = useState([])
-
-  const URL = 'https://restcountries.com/v3.1/all'
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const response = await axios.get(URL)
-        setData(response.data)
-      } catch (error) {
-        setError(error.message)
-        setData(null)
-      } finally {
-        setLoading(false)
-      }
-    }
-    getData()
-  }, [])
+  const { data, error, loading } = useAPI()
 
   const filteredData = data.filter((el) => {
-    //if no searchText the return the original
+    //if no searchText : return the original
     if (searchText === '') {
       return el
     }
-    //return the item which contains the user searchText
+    //return  item which contains  user searchText
     else {
       return el.name.common.toLowerCase().includes(searchText)
     }
   })
 
   return (
-    <div>
+    <Container>
       {loading ? (
-        <Loader></Loader>
+        <Loader />
       ) : error ? (
-        <div>{error}</div>
+        <Message variant="#f28e8e">
+          we are sorry some problem occur try later
+        </Message>
       ) : (
         <Countries>
           {regionFilter === 'All'
@@ -55,10 +42,14 @@ const List = ({ searchText, regionFilter }) => {
                 ))}
         </Countries>
       )}
-    </div>
+    </Container>
   )
 }
 
+//  Style
+const Container = styled.div`
+  min-height: 100vh;
+`
 const Countries = styled.div`
   padding: 50px 0;
   display: flex;
