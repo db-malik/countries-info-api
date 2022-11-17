@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { ThemeContext } from '../../context/ThemeContext'
 
 const Card = ({ country }) => {
-  const navigate = useNavigate()
+  const Navigate = useNavigate()
   const { theme } = useContext(ThemeContext)
   const {
     name: { common },
@@ -15,7 +15,7 @@ const Card = ({ country }) => {
   } = country
 
   const detailHandler = (name) => {
-    navigate(`/name=${name}`)
+    Navigate(`/name=${name}`)
   }
 
   return (
@@ -48,6 +48,7 @@ const Card = ({ country }) => {
   )
 }
 
+// Style-------------------
 const Container = styled.div`
   border-radius: 10px;
   width: 250px;
