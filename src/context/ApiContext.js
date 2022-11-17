@@ -9,11 +9,15 @@ export function APIContextProvider({ children }) {
   const [data, setData] = useState([])
 
   const URL = 'https://restcountries.com/v3.1/all'
-
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await axios.get(URL)
+        const response = await axios.get(URL, config)
         setData(response.data)
       } catch (error) {
         setError(error.message)
