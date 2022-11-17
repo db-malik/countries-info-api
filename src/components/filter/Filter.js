@@ -54,11 +54,11 @@ const Filter = ({ filterHandler }) => {
   )
 }
 
+// Style
 const Container = styled.div`
   position: relative;
   width: 200px;
 `
-
 const Button = styled.p`
   outline-style: none;
   border: none;
@@ -73,7 +73,6 @@ const Regions = styled.ul`
   width: 100%;
   z-index: 99;
 `
-
 const Li = styled.li`
   &:hover {
     font-weight: bold;

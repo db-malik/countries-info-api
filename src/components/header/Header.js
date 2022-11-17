@@ -9,14 +9,15 @@ const Header = () => {
   return (
     <Container style={{ backgroundColor: theme.elements, color: theme.text }}>
       <Title>Where in the world?</Title>
+
       <Theme onClick={themeHandler}>
         {theme.type === 'light' ? (
           <span>
-            <BsMoonFill /> Dark mode
+            <BsMoonFill style={{ verticalAlign: 'middle' }} /> Dark mode
           </span>
         ) : (
           <span>
-            <BsSunFill /> Light mode
+            <BsSunFill style={{ verticalAlign: 'middle' }} /> Light mode
           </span>
         )}
       </Theme>
@@ -24,7 +25,7 @@ const Header = () => {
   )
 }
 
-//  style begins
+//  style
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
@@ -36,5 +37,4 @@ const Title = styled.h1``
 const Theme = styled.p`
   cursor: pointer;
 `
-
 export default Header
